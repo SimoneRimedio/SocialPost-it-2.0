@@ -4,7 +4,7 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const data = require("./data/notes.json");
-const login = require("./data/login.json");
+const users = require("./data/login.json");
 const bodyParser = require("body-parser");
 
 const app = express();
@@ -65,6 +65,25 @@ app.post("/scrivi", function (req, res) {
   data.push(notes);
   fs.writeFileSync("./data/notes.json", JSON.stringify(data));
   res.render("postit", { data: data });
+});
+
+
+app.get("/myaccount", (req, res) => {
+  res.render("myaccount");  
+});
+
+
+app.post("/login", (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  const user = users.find(u => u.username === username && u.password === password);
+
+  if (user) {
+    res.redirect("/myaccount");  
+  } else {
+    res.send("Credenziali non valide. Riprova.");
+  }
 });
 
 app.listen(5000);

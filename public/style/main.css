@@ -1,7 +1,6 @@
 /* General styles */
 * {
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -81,13 +80,11 @@ body {
   background-color: #d45c20; /* Leggermente più scuro al passaggio del mouse */
 }
 
-/* Media queries */
-@media (max-width: 400px) {
-  .wrapper {
-    margin: 40px 15px;
-    padding: 38px 18px 18px 18px;
-  }
-}
 
 /* External font import */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
+
+#title{
+  font-family: 'Poppins', sans-serif;
+  font-size: 60px;
+}
