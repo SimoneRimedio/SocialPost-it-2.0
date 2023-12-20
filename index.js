@@ -6,6 +6,32 @@ const path = require("path");
 const data = require("./data/notes.json");
 const users = require("./data/login.json");
 const bodyParser = require("body-parser");
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+
+// Configurazione di Passport
+passport.use(
+  new LocalStrategy(function (username, password, done) {
+    const user = users.find((u) => u.username === username);
+    if (!user) {
+      return done(null, false, { message: "Utente non trovato." });
+    }
+    if (user.password !== password) {
+      return done(null, false, { message: "Password errata." });
+    }
+    return done(null, user);
+  })
+);
+
+passport.serializeUser(function (user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function (id, done) {
+  const user = users.find((u) => u.id === id);
+  done(null, user);
+});
 
 const app = express();
 
@@ -13,6 +39,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+
+// Sessione e inizializzazione di Passport
+app.use(
+  session({
+    secret: "il_tuo_segreto",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get("/", (req, res) => {
   res.render("home");
@@ -67,23 +105,36 @@ app.post("/scrivi", function (req, res) {
   res.render("postit", { data: data });
 });
 
-
 app.get("/myaccount", (req, res) => {
-  res.render("myaccount");  
+  res.render("myaccount");
 });
 
-
-app.post("/login", (req, res) => {
-  const username = req.body.username;
-  const password = req.body.password;
-
-  const user = users.find(u => u.username === username && u.password === password);
-
-  if (user) {
-    res.redirect("/myaccount");  
-  } else {
-    res.send("Credenziali non valide. Riprova.");
+app.post('/login', 
+  passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }),
+  function(req, res) {
+    // Regenerate the session to prevent session fixation attacks
+    req.session.regenerate(function(err) {
+      if (err) {
+        console.error('Error regenerating session:', err);
+      }
+      res.redirect('/myaccount');
+    });
   }
+);
+
+app.post("/register", (req, res) => {
+  const newUser = {
+    id: Date.now().toString(),
+    username: req.body.username,
+    password: req.body.password,
+  };
+
+  users.push(newUser);
+  // Salva gli utenti nel tuo file login.json o database
+
+  res.redirect("/myaccount");
 });
 
-app.listen(5000);
+app.listen(5000, () => {
+  console.log("Server avviato sulla porta 5000");
+});
