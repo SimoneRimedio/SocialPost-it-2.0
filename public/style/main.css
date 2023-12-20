@@ -1,60 +1,64 @@
-/*CSS - main.css*/
+/* General styles */
 * {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 body {
-  background-color: #363333;
+  background-color: rgb(253, 253, 235); /* Cambio del colore di sfondo */
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  color: #f6e9e9;
+  color: #272121; /* Colore principale del testo */
 }
-.title {
-  margin-top: 40px;
-}
-/* Stile dei post-it */
+
+
+/* Post-it styles */
 .post-it {
   position: relative;
   display: inline-block;
-  margin: 10px;
-  padding: 10px;
-  background-color: #f6e9e9;
-  box-shadow: 3px 3px #e16428;
-  font-size: 18px;
+  margin: 15px;
+  padding: 12px;
+  background-color: #f9f1e7; /* Tono leggermente più chiaro per il post-it */
+  box-shadow: 4px 4px 6px #e04700;
+  font-size: 20px; /* Leggermente aumentata la dimensione del testo */
   font-weight: bold;
-  line-height: 1.2;
+  line-height: 1.4;
   word-wrap: break-word;
-  min-width: 100px;
-  max-width: 400px;
-  color: #272121;
+  min-width: auto;
+  max-width: auto;
+  color: #3c2f2f; /* Tono leggermente più scuro per il testo */
+  top: 50%;
 }
-/* Pulsante per eliminare il post-it */
+
 .post-it .delete-button {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 5px;
+  right: 5px;
   cursor: pointer;
-  padding: 5px;
-  font-weight: normal;
+  padding: 6px;
+  font-weight: bold;
+  color: #e16428; /* Colore coordinato con la shadow */
 }
-/*----------------------------------------------------------------------*/
-/* Importing fonts from Google */
+
+/* Form and wrapper styles */
 .wrapper {
-  max-width: 350px;
-  min-height: 500px;
-  margin: 80px auto;
-  padding: 40px 30px 30px 30px;
-  background-color: #f6e9e9;
-  border-radius: 15px;
+  max-width: 380px; /* Aumentato leggermente per adattarsi al post-it */
+  min-height: 550px; /* Leggermente aumentata l'altezza */
+  margin: 90px auto; /* Leggermente spostato verso il basso */
+  padding: 42px 32px 32px 32px;
+  background-color: #f9f1e7; /* Tono leggermente più chiaro */
+  border-radius: 18px; /* Bordi leggermente arrotondati */
+  box-shadow: 5px 5px 10px #e16428;
 }
+
 .wrapper .name {
   font-weight: 600;
-  font-size: 1.4rem;
-  letter-spacing: 1.3px;
-  padding-left: 10px;
-  color: #555;
+  font-size: 1.6rem; /* Aumentato leggermente */
+  letter-spacing: 1.5px; /* Leggermente aumentato */
+  padding-left: 12px;
+  color: #5a4a4a; /* Tono leggermente più scuro per contrasto */
 }
 
 .wrapper .form-field input {
@@ -62,35 +66,35 @@ body {
   display: block;
   border: none;
   outline: none;
-  background: none;
-  font-size: 1.2rem;
-  color: #666;
-  padding: 10px 15px 10px 10px;
+  background: #f6e9e9; /* Tono leggermente più chiaro */
+  font-size: 1.3rem; /* Leggermente aumentato */
+  color: #4a3a3a; /* Tono leggermente più scuro */
+  padding: 12px 16px; /* Aumentato leggermente */
+  border-radius: 12px; /* Bordi leggermente arrotondati */
 }
-.wrapper .form-field {
-  padding-left: 10px;
-  margin-bottom: 20px;
-  border-radius: 20px;
-  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
-}
-.wrapper .form-field .fas {
-  color: #555;
-}
+
 .wrapper .btn {
   width: 100%;
-  height: 40px;
+  height: 45px; /* Aumentato leggermente */
   background-color: #e16428;
-  color: #fff;
-  border-radius: 25px;
-  box-shadow: 3px 3px 3px #b1b1b1, -3px -3px 3px #fff;
-  letter-spacing: 1.3px;
+  color: #f9f1e7; /* Tono più chiaro per il testo */
+  border-radius: 28px;
+  box-shadow: 4px 4px 8px #b1b1b1, -4px -4px 8px #ffffff;
+  letter-spacing: 1.5px;
+  font-weight: bold;
 }
+
 .wrapper .btn:hover {
-  background-color: #b44d1d;
+  background-color: #d45c20; /* Leggermente più scuro al passaggio del mouse */
 }
-@media (max-width: 380px) {
+
+/* Media queries */
+@media (max-width: 400px) {
   .wrapper {
-    margin: 30px 20px;
-    padding: 40px 15px 15px 15px;
+    margin: 40px 15px;
+    padding: 38px 18px 18px 18px;
   }
 }
+
+/* External font import */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
