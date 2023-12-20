@@ -1,10 +1,6 @@
 const express = require("express");
 const path = require("path");
-const users = require("./data/login.json");
 const bodyParser = require("body-parser");
-const session = require("express-session");
-const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
 
 const loginController = require("./src/controllers/auth/login");
 const registerController = require("./src/controllers/auth/register");
