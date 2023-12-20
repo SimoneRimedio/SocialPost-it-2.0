@@ -5,14 +5,9 @@
 }
 
 body {
-  background-color: rgb(253, 253, 235); /* Cambio del colore di sfondo */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: rgb(253, 253, 235);
   min-height: 100vh;
-  color: #272121; /* Colore principale del testo */
 }
-
 
 /* Post-it styles */
 .post-it {
@@ -44,14 +39,14 @@ body {
 
 /* Form and wrapper styles */
 .wrapper {
-  max-width: 380px; /* Aumentato leggermente per adattarsi al post-it */
-  min-height: 550px; /* Leggermente aumentata l'altezza */
-  margin: 90px auto; /* Leggermente spostato verso il basso */
+  max-width: 380px;
+  min-height: 550px;
   padding: 42px 32px 32px 32px;
-  background-color: #f9f1e7; /* Tono leggermente più chiaro */
-  border-radius: 18px; /* Bordi leggermente arrotondati */
+  background-color: #f9f1e7;
+  border-radius: 18px;
   box-shadow: 5px 5px 10px #e16428;
 }
+
 
 .wrapper .name {
   font-weight: 600;
@@ -75,13 +70,11 @@ body {
 
 .wrapper .btn {
   width: 100%;
-  height: 45px; /* Aumentato leggermente */
+  height: 45px;
   background-color: #e16428;
   color: #f9f1e7; /* Tono più chiaro per il testo */
   border-radius: 28px;
-  box-shadow: 4px 4px 8px #b1b1b1, -4px -4px 8px #ffffff;
-  letter-spacing: 1.5px;
-  font-weight: bold;
+  transition: background-color 0.3s; /* Transizione per un effetto più fluido */
 }
 
 .wrapper .btn:hover {

@@ -3,10 +3,11 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
+const data = require("./data/notes.json");
+const login = require("./data/login.json");
+const bodyParser = require("body-parser");
 
-let data = require("./data/notes.json");
-let app = express();
-let bodyParser = require("body-parser");
+const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + "/public"));
