@@ -14,7 +14,7 @@ exports.registerUser = (req, res) => {
   };
 
   // Leggi il file login.json
-  const users = JSON.parse(fs.readFileSync('../../../data/login.json', 'utf8'));
+  const users = require("../../../data/login.json");
 
   // Controlla se l'utente esiste già
   const existingUser = users.find(user => user.username === newUser.username);
@@ -24,9 +24,8 @@ exports.registerUser = (req, res) => {
 
   // Aggiungi il nuovo utente alla lista
   users.push(newUser);
-
   // Salva il nuovo utente nel file login.json
-  fs.writeFileSync('../../../data/login.json', JSON.stringify(users));
+  fs.writeFileSync(__dirname+"/data/login.json", JSON.stringify(users));
 
   res.redirect('/myaccount');
 };

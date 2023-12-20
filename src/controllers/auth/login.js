@@ -5,7 +5,7 @@ exports.loginUser = (req, res) => {
   const { username, password } = req.body;
 
   // Leggi il file login.json
-  const users = JSON.parse(fs.readFile("../../../data/login.json", "utf8"));
+  const users = require("../../../data/login.json");
 
   // Trova l'utente nel file
   const user = users.find((u) => u.username === username);
