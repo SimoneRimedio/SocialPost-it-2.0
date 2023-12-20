@@ -1,0 +1,23 @@
+<!--postit.ejs-->
+<%- include('./template/header.ejs'); %>
+<head>
+  <title>Post-it</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <% for(let i = 0; i < data.length; i++) { %>
+        <div class="post-it justify-content-center" id="<%= 'post-it-' + i %>">
+          <%= data[i].name %>
+          <br />
+          <%= data[i].message %>
+          <br />
+          <p class="data text-muted"><%= data[i].date%></p>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+  <%- include('./template/footer.ejs'); %>
+</body>
