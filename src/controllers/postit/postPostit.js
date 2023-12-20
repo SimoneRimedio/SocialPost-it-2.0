@@ -1,5 +1,5 @@
 const fs = require("fs");
-const data = require("../../data/notes.json");
+const data = require("../../../data/notes.json");
 
 exports.post = (req, res) => {
     let d = new Date();

@@ -1,4 +1,4 @@
-const data = require("../../data/notes.json");
+const data = require("../../../data/notes.json");
 
 exports.get = (req, res) => {
   res.render("postit", { data: data });

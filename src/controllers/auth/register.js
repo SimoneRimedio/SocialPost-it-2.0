@@ -1,4 +1,4 @@
-const users = require("../../data/login.json");
+const users = require("../../../data/login.json");
 
 exports.register = (req, res) => {
     const newUser = {
